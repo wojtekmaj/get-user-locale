@@ -15,7 +15,7 @@
     "keywords": [
       "locale",
       "language",
-      "bcp 47"
+      "language-detection"
     ],
     "author": {
       "name": "Wojciech Maj",

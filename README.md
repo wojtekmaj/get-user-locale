@@ -1,5 +1,5 @@
 # Get-User-Locale
-A function that returns a [BCP 47](https://tools.ietf.org/html/bcp47) locale tag, based on all available sources.
+A function that returns a [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
 
 ## tl;dr
 * Install by executing `npm install get-user-locale` or `yarn add get-user-locale`.
@@ -13,7 +13,7 @@ A function that returns a [BCP 47](https://tools.ietf.org/html/bcp47) locale tag
 
 ### getUserLocale()
 
-A function that returns a [BCP 47](https://tools.ietf.org/html/bcp47) locale tag, based on all available sources.
+A function that returns a [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
 
 #### Sample result
 
@@ -35,7 +35,7 @@ import { getUserLocale } from 'get-user-locale';
 
 ### getUserLocales()
 
-A function that returns an array of [BCP 47](https://tools.ietf.org/html/bcp47) locale tags, based on all available sources.
+A function that returns an array of [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag)s, based on all available sources.
 
 #### Sample result
 
@@ -59,12 +59,12 @@ There are at least five ways of determining user's locale:
 * `window.navigator.browserLanguage`
 * `window.navigator.systemLanguage`
 
-`...languages` is an array of strings, the others are strings. Some browsers return mixed-case [BCP 47](https://tools.ietf.org/html/bcp47) tags (e.g. `de-DE`), while others return lowercase ones (e.g. `de-de`). Finally, non-browser environments will not return anything, so you need a fallback.
+`...languages` is an array of strings, the others are strings. Some browsers return mixed-case [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag) (e.g. `de-DE`), while others return lowercase ones (e.g. `de-de`). Finally, non-browser environments will not return anything, so you need a fallback.
 
 Get-User-Locale does the following:
 * Combines all of them into one sane set of locales - in that particular order,
 * Dedupes them,
-* Fixes invalid, lowercased [BCP 47](https://tools.ietf.org/html/bcp47) tags (so that the part after `-` is always uppercased),
+* Fixes invalid, lowercased [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag) (so that the part after `-` is always uppercased),
 * Adds a fallback to `en-US`, so if all else fails, you will get a result that won't crash your app.
 
 ## License
