@@ -12,6 +12,11 @@
       "test-jest": "jest",
       "test-jest-coverage": "jest --coverage"
     },
+    "jest": {
+      "moduleNameMapper": {
+        "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
+      }
+    },
     "keywords": [
       "locale",
       "language",
