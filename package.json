@@ -1,6 +1,6 @@
 {
     "name": "get-user-locale",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Returns a list of strings representing the user's preferred languages.",
     "main": "dist/entry.js",
     "es6": "src/entry.js",
@@ -11,6 +11,11 @@
       "test-eslint": "eslint --ext .jsx,.js src/",
       "test-jest": "jest",
       "test-jest-coverage": "jest --coverage"
+    },
+    "jest": {
+      "moduleNameMapper": {
+        "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
+      }
     },
     "keywords": [
       "locale",

@@ -1,4 +1,4 @@
-// import once from 'lodash.once';
+import once from 'lodash.once';
 
 const filterDuplicates = arr => arr.filter((el, index, self) => self.indexOf(el) === index);
 
@@ -15,7 +15,7 @@ const fixLowercaseProperties = arr => arr.map((el) => {
   return `${splitEl[0]}-${splitEl[1].toUpperCase()}`;
 });
 
-export const getUserLocales = () => {
+export const getUserLocales = once(() => {
   const languageList = [];
 
   if (typeof window !== 'undefined') {
@@ -39,8 +39,8 @@ export const getUserLocales = () => {
   languageList.push('en-US'); // Fallback
 
   return fixLowercaseProperties(filterDuplicates(languageList));
-};
+});
 
-export const getUserLocale = () => getUserLocales()[0];
+export const getUserLocale = once(() => getUserLocales()[0]);
 
 export default getUserLocale;
