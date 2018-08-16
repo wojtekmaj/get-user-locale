@@ -8,7 +8,7 @@
       "build": "babel src -d dist --ignore __tests__",
       "prepublishOnly": "yarn run build",
       "test": "yarn run test-eslint && yarn run test-jest",
-      "test-eslint": "eslint --ext .jsx,.js src/",
+      "test-eslint": "eslint src/ --ext .jsx,.js",
       "test-jest": "jest",
       "test-jest-coverage": "jest --coverage"
     },
