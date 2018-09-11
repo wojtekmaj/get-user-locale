@@ -5,7 +5,7 @@ const filterDuplicates = arr => arr.filter((el, index, self) => self.indexOf(el)
 const fixLowercaseProperties = arr => arr.map((el) => {
   if (
     !el
-    || !el.includes('-')
+    || el.indexOf('-') === -1
     || el.toLowerCase() !== el
   ) {
     return el;
