@@ -1,55 +1,55 @@
 {
-    "name": "get-user-locale",
-    "version": "1.1.1",
-    "description": "Returns a list of strings representing the user's preferred languages.",
-    "main": "dist/entry.js",
-    "es6": "src/entry.js",
-    "scripts": {
-      "build": "babel src -d dist --ignore **/__tests__",
-      "prepublishOnly": "yarn run build",
-      "test": "yarn run test-eslint && yarn run test-jest",
-      "test-eslint": "eslint src/ --ext .jsx,.js",
-      "test-jest": "jest",
-      "test-jest-coverage": "jest --coverage"
-    },
-    "jest": {
-      "moduleNameMapper": {
-        "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
-      }
-    },
-    "keywords": [
-      "locale",
-      "language",
-      "language-detection"
-    ],
-    "author": {
-      "name": "Wojciech Maj",
-      "email": "kontakt@wojtekmaj.pl"
-    },
-    "license": "MIT",
-    "dependencies": {
-      "lodash.once": "^4.1.1"
-    },
-    "devDependencies": {
-      "@babel/cli": "^7.0.0",
-      "@babel/core": "^7.0.0",
-      "@babel/preset-env": "^7.0.0",
-      "babel-core": "7.0.0-bridge.0",
-      "babel-eslint": "^9.0.0",
-      "babel-jest": "^23.6.0",
-      "eslint": "^5.5.0",
-      "eslint-config-airbnb-base": "^13.1.0",
-      "eslint-plugin-import": "^2.14.0",
-      "jest": "^23.6.0"
-    },
-    "files": [
-      "LICENSE",
-      "README.md",
-      "dist/",
-      "src/"
-    ],
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/wojtekmaj/get-user-locale.git"
+  "name": "get-user-locale",
+  "version": "1.1.1",
+  "description": "Returns a list of strings representing the user's preferred languages.",
+  "main": "dist/entry.js",
+  "es6": "src/entry.js",
+  "scripts": {
+    "build": "babel src -d dist --ignore **/__tests__",
+    "prepublishOnly": "yarn run build",
+    "test": "yarn run test-eslint && yarn run test-jest",
+    "test-eslint": "eslint src/ --ext .jsx,.js",
+    "test-jest": "jest",
+    "test-jest-coverage": "jest --coverage"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
     }
+  },
+  "keywords": [
+    "locale",
+    "language",
+    "language-detection"
+  ],
+  "author": {
+    "name": "Wojciech Maj",
+    "email": "kontakt@wojtekmaj.pl"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "lodash.once": "^4.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^23.6.0"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/",
+    "src/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wojtekmaj/get-user-locale.git"
   }
+}
