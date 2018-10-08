@@ -7,8 +7,6 @@
   },
   "parser": "babel-eslint",
   "rules": {
-    "function-paren-newline": "off",
-    "global-require": "off",
     "prefer-destructuring": "warn",
     "prefer-spread": "warn"
   }
