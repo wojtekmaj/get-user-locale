@@ -1,3 +1,5 @@
+![downloads](https://img.shields.io/npm/dt/get-user-locale.svg)
+
 # Get-User-Locale
 A function that returns a [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
 
