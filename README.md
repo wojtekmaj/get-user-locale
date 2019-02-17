@@ -15,7 +15,7 @@ A function that returns user's locale as an [IETF language tag](https://en.wikip
 
 ### getUserLocale()
 
-A function that returns a [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
+A function that returns user's preferred locale as an [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
 
 #### Sample result
 
@@ -37,7 +37,7 @@ import { getUserLocale } from 'get-user-locale';
 
 ### getUserLocales()
 
-A function that returns an array of [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag)s, based on all available sources.
+A function that returns an array of user's preferred locales as an [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
 
 #### Sample result
 
