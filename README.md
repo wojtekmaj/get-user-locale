@@ -1,4 +1,4 @@
-![downloads](https://img.shields.io/npm/dt/get-user-locale.svg)
+![downloads](https://img.shields.io/npm/dt/get-user-locale.svg) ![build](https://img.shields.io/travis/wojtekmaj/get-user-locale/master.svg)
 
 # Get-User-Locale
 A function that returns user's locale as an [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
