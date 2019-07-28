@@ -1,26 +1,30 @@
 import once from 'lodash.once';
 
-const filterDuplicates = arr => arr.filter((el, index, self) => self.indexOf(el) === index);
+function filterDuplicates(arr) {
+  return arr.filter((el, index, self) => self.indexOf(el) === index);
+}
 
-const fixLowercaseProperties = arr => arr.map((el) => {
-  if (
-    !el
-    || el.indexOf('-') === -1
-    || el.toLowerCase() !== el
-  ) {
-    return el;
-  }
+function fixLowercaseProperties(arr) {
+  return arr.map((el) => {
+    if (
+      !el
+      || el.indexOf('-') === -1
+      || el.toLowerCase() !== el
+    ) {
+      return el;
+    }
 
-  const splitEl = el.split('-');
-  return `${splitEl[0]}-${splitEl[1].toUpperCase()}`;
-});
+    const splitEl = el.split('-');
+    return `${splitEl[0]}-${splitEl[1].toUpperCase()}`;
+  });
+}
 
 export const getUserLocales = once(() => {
-  const languageList = [];
+  let languageList = [];
 
   if (typeof window !== 'undefined') {
     if (window.navigator.languages) {
-      languageList.push(...window.navigator.languages);
+      languageList = languageList.concat(window.navigator.languages);
     }
     if (window.navigator.language) {
       languageList.push(window.navigator.language);
