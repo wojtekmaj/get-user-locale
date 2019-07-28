@@ -1,7 +1,7 @@
 import getUserLocaleDefault, {
   getUserLocale,
   getUserLocales,
-} from '../entry';
+} from './index';
 
 const navigatorLanguageProperties = ['language', 'languages', 'userLanguage', 'browserLanguage', 'systemLanguage'];
 
