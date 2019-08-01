@@ -19,7 +19,7 @@ function fixLowercaseProperties(arr) {
   });
 }
 
-export const getUserLocales = once(() => {
+function getUserLocalesInternal() {
   let languageList = [];
 
   if (typeof window !== 'undefined') {
@@ -43,8 +43,14 @@ export const getUserLocales = once(() => {
   languageList.push('en-US'); // Fallback
 
   return fixLowercaseProperties(filterDuplicates(languageList));
-});
+}
 
-export const getUserLocale = once(() => getUserLocales()[0]);
+export const getUserLocales = once(getUserLocalesInternal);
+
+function getUserLocaleInternal() {
+  return getUserLocales()[0];
+}
+
+export const getUserLocale = once(getUserLocaleInternal);
 
 export default getUserLocale;
