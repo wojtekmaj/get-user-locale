@@ -13,11 +13,12 @@ const mockNavigator = (navigator) => {
   ));
 };
 
-it('exports getUserLocale by default', () => {
+it('exports getUserLocale() by default', () => {
+  expect(getUserLocaleDefault).toBeDefined();
   expect(getUserLocaleDefault).toBe(getUserLocale);
 });
 
-describe('getUserLocale', () => {
+describe('getUserLocale()', () => {
   it('returns valid list for Chrome', () => {
     const navigator = {
       language: 'pl',
@@ -95,7 +96,7 @@ describe('getUserLocale', () => {
   });
 });
 
-describe('getUserLocales', () => {
+describe('getUserLocales()', () => {
   it('returns valid list for Chrome', () => {
     const navigator = {
       language: 'pl',
