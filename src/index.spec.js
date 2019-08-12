@@ -6,7 +6,7 @@ import getUserLocaleDefault, {
 const navigatorLanguageProperties = ['language', 'languages', 'userLanguage', 'browserLanguage', 'systemLanguage'];
 
 const mockNavigator = (navigator) => {
-  navigatorLanguageProperties.forEach(property => Object.defineProperty(
+  navigatorLanguageProperties.forEach((property) => Object.defineProperty(
     window.navigator,
     property,
     { value: navigator[property], configurable: true },
