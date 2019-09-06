@@ -13,6 +13,7 @@
     "prepublishOnly": "yarn clean && yarn build",
     "test": "yarn lint && yarn jest"
   },
+  "typings": "./get-user-locale.d.ts",
   "jest": {
     "moduleNameMapper": {
       "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
