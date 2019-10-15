@@ -1,6 +1,6 @@
+.DS_Store
 .idea
 .vscode
-.DS_Store
 dist
 coverage
 node_modules
