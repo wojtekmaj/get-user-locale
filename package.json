@@ -50,7 +50,8 @@
     "LICENSE",
     "README.md",
     "dist/",
-    "src/"
+    "src/",
+    "get-user-locale.d.ts"
   ],
   "repository": {
     "type": "git",
