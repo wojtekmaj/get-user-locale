@@ -6,6 +6,7 @@
   "module": "dist/esm/index.js",
   "source": "src/index.js",
   "sideEffects": false,
+  "types": "./index.d.ts",
   "scripts": {
     "build": "yarn build-esm && yarn build-umd",
     "build-esm": "BABEL_ENV=production-esm babel src -d dist/esm --ignore **/*.spec.js",
@@ -17,7 +18,6 @@
     "prepublishOnly": "yarn clean && yarn build",
     "test": "yarn lint && yarn jest"
   },
-  "typings": "./get-user-locale.d.ts",
   "jest": {
     "moduleNameMapper": {
       "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
@@ -49,9 +49,9 @@
   "files": [
     "LICENSE",
     "README.md",
+    "index.d.ts",
     "dist/",
-    "src/",
-    "get-user-locale.d.ts"
+    "src/"
   ],
   "repository": {
     "type": "git",
