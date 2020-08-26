@@ -5,7 +5,7 @@ A function that returns user's locale as an [IETF language tag](https://en.wikip
 
 ## tl;dr
 * Install by executing `npm install get-user-locale` or `yarn add get-user-locale`.
-* Import by adding `import getUserLocale from 'get-user-locale`.
+* Import by adding `import getUserLocale from 'get-user-locale'`.
 * Do stuff with it!
     ```js
     const userLocale = getUserLocale();
