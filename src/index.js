@@ -1,16 +1,12 @@
 import once from 'lodash.once';
 
-function filterDuplicates(arr) {
+function uniq(arr) {
   return arr.filter((el, index, self) => self.indexOf(el) === index);
 }
 
-function fixLowercaseProperties(arr) {
+function normalizeLocales(arr) {
   return arr.map((el) => {
-    if (
-      !el
-      || el.indexOf('-') === -1
-      || el.toLowerCase() !== el
-    ) {
+    if (!el || el.indexOf('-') === -1 || el.toLowerCase() !== el) {
       return el;
     }
 
@@ -23,26 +19,28 @@ function getUserLocalesInternal() {
   let languageList = [];
 
   if (typeof window !== 'undefined') {
-    if (window.navigator.languages) {
-      languageList = languageList.concat(window.navigator.languages);
+    const { navigator } = window;
+
+    if (navigator.languages) {
+      languageList = languageList.concat(navigator.languages);
     }
-    if (window.navigator.language) {
-      languageList.push(window.navigator.language);
+    if (navigator.language) {
+      languageList.push(navigator.language);
     }
-    if (window.navigator.userLanguage) {
-      languageList.push(window.navigator.userLanguage);
+    if (navigator.userLanguage) {
+      languageList.push(navigator.userLanguage);
     }
-    if (window.navigator.browserLanguage) {
-      languageList.push(window.navigator.browserLanguage);
+    if (navigator.browserLanguage) {
+      languageList.push(navigator.browserLanguage);
     }
-    if (window.navigator.systemLanguage) {
-      languageList.push(window.navigator.systemLanguage);
+    if (navigator.systemLanguage) {
+      languageList.push(navigator.systemLanguage);
     }
   }
 
   languageList.push('en-US'); // Fallback
 
-  return fixLowercaseProperties(filterDuplicates(languageList));
+  return normalizeLocales(uniq(languageList));
 }
 
 export const getUserLocales = once(getUserLocalesInternal);
