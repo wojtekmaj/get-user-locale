@@ -1,6 +1,7 @@
 import getUserLocaleDefault, {
   getUserLocale,
   getUserLocales,
+  defaults,
 } from './index';
 
 const navigatorLanguageProperties = ['language', 'languages', 'userLanguage', 'browserLanguage', 'systemLanguage'];
@@ -94,6 +95,20 @@ describe('getUserLocale()', () => {
 
     expect(getUserLocale()).toEqual('en-US');
   });
+
+  it('returns overwritten default when no navigator properties are given', () => {
+    const navigator = {};
+    const fallbackLocale = 'en-GB';
+
+    const originalFallbackLocale = defaults.fallbackLocale;
+    defaults.fallbackLocale = fallbackLocale;
+
+    mockNavigator(navigator);
+
+    expect(getUserLocale()).toEqual(fallbackLocale);
+
+    defaults.fallbackLocale = originalFallbackLocale;
+  });
 });
 
 describe('getUserLocales()', () => {
@@ -171,5 +186,18 @@ describe('getUserLocales()', () => {
     mockNavigator(navigator);
 
     expect(getUserLocales()).toEqual(['en-US']);
+  });
+
+  it('returns overwritten default when no navigator properties are given', () => {
+    const navigator = {};
+    const fallbackLocale = 'en-GB';
+
+    const originalFallbackLocale = defaults.fallbackLocale;
+    defaults.fallbackLocale = fallbackLocale;
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual([fallbackLocale]);
+    defaults.fallbackLocale = originalFallbackLocale;
   });
 });

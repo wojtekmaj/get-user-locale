@@ -1,5 +1,9 @@
 import once from 'lodash.once';
 
+export const defaults = {
+  fallbackLocale: 'en-US',
+};
+
 function filterDuplicates(arr) {
   return arr.filter((el, index, self) => self.indexOf(el) === index);
 }
@@ -40,7 +44,7 @@ function getUserLocalesInternal() {
     }
   }
 
-  languageList.push('en-US'); // Fallback
+  languageList.push(defaults.fallbackLocale); // Fallback
 
   return fixLowercaseProperties(filterDuplicates(languageList));
 }
