@@ -1,4 +1,9 @@
-import once from 'lodash.once';
+import memoize from 'lodash.memoize';
+
+export const defaultOptions = {
+  fallbackLocale: 'en-US',
+  useFallbackLocale: true,
+};
 
 function uniq(arr) {
   return arr.filter((el, index, self) => self.indexOf(el) === index);
@@ -15,7 +20,12 @@ function normalizeLocales(arr) {
   });
 }
 
-function getUserLocalesInternal() {
+function optionResolver(options) {
+  return JSON.stringify({ ...defaultOptions, ...options})
+}
+
+function getUserLocalesInternal(options = {}) {
+  const _options = { ...defaultOptions, ...options}
   let languageList = [];
 
   if (typeof window !== 'undefined') {
@@ -38,17 +48,19 @@ function getUserLocalesInternal() {
     }
   }
 
-  languageList.push('en-US'); // Fallback
+  if (_options.useFallbackLocale) {
+    languageList.push(_options.fallbackLocale); // Fallback
+  }
 
   return normalizeLocales(uniq(languageList));
 }
 
-export const getUserLocales = once(getUserLocalesInternal);
+export const getUserLocales = memoize(getUserLocalesInternal, optionResolver);
 
-function getUserLocaleInternal() {
-  return getUserLocales()[0];
+function getUserLocaleInternal(options = {}) {
+  return getUserLocales(options)[0] || null;
 }
 
-export const getUserLocale = once(getUserLocaleInternal);
+export const getUserLocale = memoize(getUserLocaleInternal, optionResolver);
 
 export default getUserLocale;

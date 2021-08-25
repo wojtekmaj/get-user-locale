@@ -1,4 +1,8 @@
-import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index';
+import getUserLocaleDefault, {
+  getUserLocale,
+  getUserLocales,
+  defaultOptions,
+} from './index';
 
 jest.mock('lodash.once', () => (fn) => fn);
 
@@ -93,13 +97,31 @@ describe('getUserLocale()', () => {
     expect(getUserLocale()).toEqual('pl-PL');
   });
 
-  it('returns when no navigator properties are given', () => {
-    const navigator = {};
-
-    mockNavigator(navigator);
-
-    expect(getUserLocale()).toEqual('en-US');
-  });
+  describe('returns when no navigator properties are given', () => {
+    it('default fallback locale', () => {
+      const navigator = {};
+  
+      mockNavigator(navigator);
+  
+      expect(getUserLocale()).toEqual(defaultOptions.fallbackLocale);
+    });
+    
+    it('custom fallback locale', () => {
+      const navigator = {};
+  
+      mockNavigator(navigator);
+  
+      expect(getUserLocale({ fallbackLocale: 'en-GB' })).toEqual('en-GB');
+    });
+    
+    it('disable fallback behavior', () => {
+      const navigator = {};
+  
+      mockNavigator(navigator);
+  
+      expect(getUserLocale({ useFallbackLocale: false })).toEqual(null);
+    });
+  })
 });
 
 describe('getUserLocales()', () => {
@@ -171,11 +193,29 @@ describe('getUserLocales()', () => {
     expect(getUserLocales()).toEqual(['pl-PL', 'pl', 'en-US', 'en']);
   });
 
-  it('returns when no navigator properties are given', () => {
-    const navigator = {};
+  describe('returns when no navigator properties are given', () => {
+    it('default fallback locale', () => {
+      const navigator = {};
+  
+      mockNavigator(navigator);
+  
+      expect(getUserLocales()).toEqual([defaultOptions.fallbackLocale]);
+    });
 
-    mockNavigator(navigator);
-
-    expect(getUserLocales()).toEqual(['en-US']);
-  });
+    it('custom fallback locale', () => {
+      const navigator = {};
+  
+      mockNavigator(navigator);
+  
+      expect(getUserLocales({ fallbackLocale: 'en-GB' })).toEqual(['en-GB']);
+    });
+    
+    it('disable fallback behavior', () => {
+      const navigator = {};
+  
+      mockNavigator(navigator);
+  
+      expect(getUserLocales({ useFallbackLocale: false })).toEqual([]);
+    });
+  })
 });
