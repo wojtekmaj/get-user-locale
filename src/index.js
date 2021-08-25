@@ -21,11 +21,11 @@ function normalizeLocales(arr) {
 }
 
 function optionResolver(options) {
-  return JSON.stringify({ ...defaultOptions, ...options})
+  return JSON.stringify({ ...defaultOptions, ...options });
 }
 
 function getUserLocalesInternal(options = {}) {
-  const _options = { ...defaultOptions, ...options}
+  const localOptions = { ...defaultOptions, ...options };
   let languageList = [];
 
   if (typeof window !== 'undefined') {
@@ -48,8 +48,8 @@ function getUserLocalesInternal(options = {}) {
     }
   }
 
-  if (_options.useFallbackLocale) {
-    languageList.push(_options.fallbackLocale); // Fallback
+  if (localOptions.useFallbackLocale) {
+    languageList.push(localOptions.fallbackLocale); // Fallback
   }
 
   return normalizeLocales(uniq(languageList));

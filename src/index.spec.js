@@ -100,28 +100,28 @@ describe('getUserLocale()', () => {
   describe('returns when no navigator properties are given', () => {
     it('default fallback locale', () => {
       const navigator = {};
-  
+
       mockNavigator(navigator);
-  
+
       expect(getUserLocale()).toEqual(defaultOptions.fallbackLocale);
     });
-    
+
     it('custom fallback locale', () => {
       const navigator = {};
-  
+
       mockNavigator(navigator);
-  
+
       expect(getUserLocale({ fallbackLocale: 'en-GB' })).toEqual('en-GB');
     });
-    
+
     it('disable fallback behavior', () => {
       const navigator = {};
-  
+
       mockNavigator(navigator);
-  
+
       expect(getUserLocale({ useFallbackLocale: false })).toEqual(null);
     });
-  })
+  });
 });
 
 describe('getUserLocales()', () => {
@@ -196,26 +196,26 @@ describe('getUserLocales()', () => {
   describe('returns when no navigator properties are given', () => {
     it('default fallback locale', () => {
       const navigator = {};
-  
+
       mockNavigator(navigator);
-  
+
       expect(getUserLocales()).toEqual([defaultOptions.fallbackLocale]);
     });
 
     it('custom fallback locale', () => {
       const navigator = {};
-  
+
       mockNavigator(navigator);
-  
+
       expect(getUserLocales({ fallbackLocale: 'en-GB' })).toEqual(['en-GB']);
     });
-    
+
     it('disable fallback behavior', () => {
       const navigator = {};
-  
+
       mockNavigator(navigator);
-  
+
       expect(getUserLocales({ useFallbackLocale: false })).toEqual([]);
     });
-  })
+  });
 });
