@@ -20,7 +20,7 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
+      "lodash.memoize": "<rootDir>/__mocks__/lodashMemoizeMock.js"
     }
   },
   "keywords": [
