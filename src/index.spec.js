@@ -3,6 +3,8 @@ import getUserLocaleDefault, {
   getUserLocales,
 } from './index';
 
+jest.mock('lodash.once', () => (fn) => fn);
+
 const navigatorLanguageProperties = ['language', 'languages', 'userLanguage', 'browserLanguage', 'systemLanguage'];
 
 const mockNavigator = (navigator) => {
