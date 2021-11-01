@@ -59,5 +59,6 @@
     "type": "git",
     "url": "https://github.com/wojtekmaj/get-user-locale.git"
   },
-  "funding": "https://github.com/wojtekmaj/get-user-locale?sponsor=1"
+  "funding": "https://github.com/wojtekmaj/get-user-locale?sponsor=1",
+  "packageManager": "yarn@3.1.0"
 }
