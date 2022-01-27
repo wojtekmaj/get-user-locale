@@ -1,18 +1,22 @@
-import getUserLocaleDefault, {
-  getUserLocale,
-  getUserLocales,
-} from './index';
+import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index';
 
 jest.mock('lodash.once', () => (fn) => fn);
 
-const navigatorLanguageProperties = ['language', 'languages', 'userLanguage', 'browserLanguage', 'systemLanguage'];
+const navigatorLanguageProperties = [
+  'language',
+  'languages',
+  'userLanguage',
+  'browserLanguage',
+  'systemLanguage',
+];
 
 const mockNavigator = (navigator) => {
-  navigatorLanguageProperties.forEach((property) => Object.defineProperty(
-    window.navigator,
-    property,
-    { value: navigator[property], configurable: true },
-  ));
+  navigatorLanguageProperties.forEach((property) =>
+    Object.defineProperty(window.navigator, property, {
+      value: navigator[property],
+      configurable: true,
+    }),
+  );
 };
 
 it('exports getUserLocale() by default', () => {
