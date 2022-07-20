@@ -1,10 +1,6 @@
-import getUserLocaleDefault, {
-  getUserLocale,
-  getUserLocales,
-  defaultOptions,
-} from './index';
+import getUserLocaleDefault, { getUserLocale, getUserLocales, defaultOptions } from './index';
 
-jest.mock('lodash.once', () => (fn) => fn);
+jest.mock('lodash.memoize', () => (fn) => fn);
 
 const navigatorLanguageProperties = [
   'language',
