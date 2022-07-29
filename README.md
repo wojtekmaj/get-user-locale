@@ -37,6 +37,17 @@ or
 import { getUserLocale } from 'get-user-locale';
 ```
 
+##### Options
+
+`getUserLocale()` may be called with an optional `options` argument.
+
+`options` object may contain the following properties:
+
+| Property            | Description                         | Default value |
+| ------------------- | ----------------------------------- | ------------- |
+| `fallbackLocale`    | A locale to use as a fallback.      | `en-US`       |
+| `useFallbackLocale` | Whether to use the fallback locale. | `true`        |
+
 ### `getUserLocales()`
 
 A function that returns an array of user's preferred locales as an [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
@@ -52,6 +63,17 @@ A function that returns an array of user's preferred locales as an [IETF languag
 ```js
 import { getUserLocales } from 'get-user-locale';
 ```
+
+##### Options
+
+`getUserLocales()` may be called with an optional `options` argument.
+
+`options` object may contain the following properties:
+
+| Property            | Description                         | Default value |
+| ------------------- | ----------------------------------- | ------------- |
+| `fallbackLocale`    | A locale to use as a fallback.      | `en-US`       |
+| `useFallbackLocale` | Whether to use the fallback locale. | `true`        |
 
 ## Technical details
 

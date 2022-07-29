@@ -18,11 +18,6 @@
     "prepack": "yarn clean && yarn build",
     "test": "yarn lint && yarn jest"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "lodash.once": "<rootDir>/__mocks__/lodashOnceMock.js"
-    }
-  },
   "keywords": [
     "locale",
     "language",
@@ -34,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "lodash.once": "^4.1.1"
+    "lodash.memoize": "^4.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.0",
