@@ -1,12 +1,11 @@
 import memoize from 'lodash.memoize';
 
-export const defaultOptions = {
-  fallbackLocale: 'en-US',
-  useFallbackLocale: true,
-};
+function resolver(options) {
+  return JSON.stringify(options);
+}
 
-function uniq(arr) {
-  return arr.filter((el, index, self) => self.indexOf(el) === index);
+function uniqDefined(arr) {
+  return arr.filter((el, index) => el && arr.indexOf(el) === index);
 }
 
 function normalizeLocales(arr) {
@@ -20,47 +19,34 @@ function normalizeLocales(arr) {
   });
 }
 
-function optionResolver(options) {
-  return JSON.stringify({ ...defaultOptions, ...options });
-}
-
-function getUserLocalesInternal(options = {}) {
-  const localOptions = { ...defaultOptions, ...options };
+function getUserLocalesInternal({ useFallbackLocale = true, fallbackLocale = 'en-US' } = {}) {
   let languageList = [];
 
   if (typeof window !== 'undefined') {
     const { navigator } = window;
 
-    if (navigator.languages) {
-      languageList = languageList.concat(navigator.languages);
-    }
-    if (navigator.language) {
-      languageList.push(navigator.language);
-    }
-    if (navigator.userLanguage) {
-      languageList.push(navigator.userLanguage);
-    }
-    if (navigator.browserLanguage) {
-      languageList.push(navigator.browserLanguage);
-    }
-    if (navigator.systemLanguage) {
-      languageList.push(navigator.systemLanguage);
-    }
+    languageList = languageList.concat(
+      navigator.languages,
+      navigator.language,
+      navigator.userLanguage,
+      navigator.browserLanguage,
+      navigator.systemLanguage,
+    );
   }
 
-  if (localOptions.useFallbackLocale) {
-    languageList.push(localOptions.fallbackLocale); // Fallback
+  if (useFallbackLocale) {
+    languageList.push(fallbackLocale);
   }
 
-  return normalizeLocales(uniq(languageList));
+  return normalizeLocales(uniqDefined(languageList));
 }
 
-export const getUserLocales = memoize(getUserLocalesInternal, optionResolver);
+export const getUserLocales = memoize(getUserLocalesInternal, resolver);
 
-function getUserLocaleInternal(options = {}) {
+function getUserLocaleInternal(options) {
   return getUserLocales(options)[0] || null;
 }
 
-export const getUserLocale = memoize(getUserLocaleInternal, optionResolver);
+export const getUserLocale = memoize(getUserLocaleInternal, resolver);
 
 export default getUserLocale;
