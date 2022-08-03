@@ -6,15 +6,17 @@ let mockNavigatorObject = null;
  * Because unlike in the real browser navigator object will change, we need to add mock navigator
  * object to lodash.memoize resolver function.
  */
-jest.mock('lodash.memoize', () => jest.fn().mockImplementation((fn, resolver) => {
-  const actualMemoize = jest.requireActual('lodash.memoize');
+jest.mock('lodash.memoize', () =>
+  jest.fn().mockImplementation((fn, resolver) => {
+    const actualMemoize = jest.requireActual('lodash.memoize');
 
-  function navigatorResolver(args) {
-    return JSON.stringify(mockNavigatorObject) + resolver(args);
-  }
+    function navigatorResolver(args) {
+      return JSON.stringify(mockNavigatorObject) + resolver(args);
+    }
 
-  return actualMemoize(fn, navigatorResolver);
-}));
+    return actualMemoize(fn, navigatorResolver);
+  }),
+);
 
 const navigatorLanguageProperties = [
   'language',
@@ -25,10 +27,12 @@ const navigatorLanguageProperties = [
 ];
 
 function mockNavigator(mockNavigatorProperties) {
-  navigatorLanguageProperties.forEach((property) => Object.defineProperty(window.navigator, property, {
-    value: mockNavigatorProperties[property],
-    configurable: true,
-  }));
+  navigatorLanguageProperties.forEach((property) =>
+    Object.defineProperty(window.navigator, property, {
+      value: mockNavigatorProperties[property],
+      configurable: true,
+    }),
+  );
   mockNavigatorObject = mockNavigatorProperties;
 }
 
