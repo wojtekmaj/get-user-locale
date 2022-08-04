@@ -1,5 +1,9 @@
 declare module 'get-user-locale' {
-  export function getUserLocale(): string;
-  export function getUserLocales(): string[];
+  export type UserLocaleOptions = {
+    fallbackLocale?: string,
+    useFallbackLocale?: boolean,
+  }
+  export function getUserLocale(options?: UserLocaleOptions): string;
+  export function getUserLocales(options?: UserLocaleOptions): string[];
   export default getUserLocale;
 }
