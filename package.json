@@ -16,7 +16,7 @@
     "lint": "eslint src/ --ext .jsx,.js",
     "postinstall": "husky install",
     "prepack": "yarn clean && yarn build",
-    "prettier": "prettier --check .",
+    "prettier": "prettier --check . --cache",
     "test": "yarn lint && yarn prettier && yarn jest"
   },
   "keywords": [
@@ -41,7 +41,7 @@
     "husky": "^8.0.0",
     "jest": "^29.0.0",
     "jest-environment-jsdom": "^29.0.0",
-    "prettier": "^2.5.0",
+    "prettier": "^2.7.0",
     "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.0"
   },
