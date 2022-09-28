@@ -1,14 +1,19 @@
 import memoize from 'lodash.memoize';
 
-function resolver(options) {
+type UserLocaleOptions = {
+  useFallbackLocale?: boolean;
+  fallbackLocale?: string;
+};
+
+function resolver(options?: UserLocaleOptions): string {
   return JSON.stringify(options);
 }
 
-function uniqDefined(arr) {
+function uniqDefined(arr: string[]) {
   return arr.filter((el, index) => el && arr.indexOf(el) === index);
 }
 
-function normalizeLocales(arr) {
+function normalizeLocales(arr: string[]) {
   return arr.map((el) => {
     if (!el || el.indexOf('-') === -1 || el.toLowerCase() !== el) {
       return el;
@@ -19,8 +24,11 @@ function normalizeLocales(arr) {
   });
 }
 
-function getUserLocalesInternal({ useFallbackLocale = true, fallbackLocale = 'en-US' } = {}) {
-  let languageList = [];
+function getUserLocalesInternal({
+  useFallbackLocale = true,
+  fallbackLocale = 'en-US',
+}: UserLocaleOptions = {}): string[] {
+  let languageList: string[] = [];
 
   if (typeof navigator !== 'undefined') {
     languageList = languageList.concat(navigator.languages, navigator.language);
@@ -35,7 +43,7 @@ function getUserLocalesInternal({ useFallbackLocale = true, fallbackLocale = 'en
 
 export const getUserLocales = memoize(getUserLocalesInternal, resolver);
 
-function getUserLocaleInternal(options) {
+function getUserLocaleInternal(options?: UserLocaleOptions): string | null {
   return getUserLocales(options)[0] || null;
 }
 
