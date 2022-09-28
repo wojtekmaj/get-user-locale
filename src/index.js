@@ -25,13 +25,7 @@ function getUserLocalesInternal({ useFallbackLocale = true, fallbackLocale = 'en
   if (typeof window !== 'undefined') {
     const { navigator } = window;
 
-    languageList = languageList.concat(
-      navigator.languages,
-      navigator.language,
-      navigator.userLanguage,
-      navigator.browserLanguage,
-      navigator.systemLanguage,
-    );
+    languageList = languageList.concat(navigator.languages, navigator.language);
   }
 
   if (useFallbackLocale) {

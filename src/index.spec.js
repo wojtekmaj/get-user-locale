@@ -18,13 +18,7 @@ jest.mock('lodash.memoize', () =>
   }),
 );
 
-const navigatorLanguageProperties = [
-  'language',
-  'languages',
-  'userLanguage',
-  'browserLanguage',
-  'systemLanguage',
-];
+const navigatorLanguageProperties = ['language', 'languages'];
 
 function mockNavigator(mockNavigatorProperties) {
   navigatorLanguageProperties.forEach((property) =>
@@ -62,31 +56,6 @@ describe('getUserLocale()', () => {
     mockNavigator(navigator);
 
     expect(getUserLocale()).toEqual('pl');
-  });
-
-  it('returns valid list for IE 9-10', () => {
-    const navigator = {
-      userLanguage: 'pl-PL',
-      browserLanguage: 'pl-PL',
-      systemLanguage: 'pl-PL',
-    };
-
-    mockNavigator(navigator);
-
-    expect(getUserLocale()).toEqual('pl-PL');
-  });
-
-  it('returns valid list for IE 11', () => {
-    const navigator = {
-      language: 'pl-PL',
-      userLanguage: 'pl-PL',
-      browserLanguage: 'pl-PL',
-      systemLanguage: 'pl-PL',
-    };
-
-    mockNavigator(navigator);
-
-    expect(getUserLocale()).toEqual('pl-PL');
   });
 
   it('returns valid list for Safari 9', () => {
@@ -164,31 +133,6 @@ describe('getUserLocales()', () => {
     mockNavigator(navigator);
 
     expect(getUserLocales()).toEqual(['pl', 'en-US', 'en']);
-  });
-
-  it('returns valid list for IE 9-10', () => {
-    const navigator = {
-      userLanguage: 'pl-PL',
-      browserLanguage: 'pl-PL',
-      systemLanguage: 'pl-PL',
-    };
-
-    mockNavigator(navigator);
-
-    expect(getUserLocales()).toEqual(['pl-PL', 'en-US']);
-  });
-
-  it('returns valid list for IE 11', () => {
-    const navigator = {
-      language: 'pl-PL',
-      userLanguage: 'pl-PL',
-      browserLanguage: 'pl-PL',
-      systemLanguage: 'pl-PL',
-    };
-
-    mockNavigator(navigator);
-
-    expect(getUserLocales()).toEqual(['pl-PL', 'en-US']);
   });
 
   it('returns valid list for Safari 9', () => {
