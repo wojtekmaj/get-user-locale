@@ -81,9 +81,6 @@ There are at least five ways of determining user's locale:
 
 - `window.navigator.languages`
 - `window.navigator.language`
-- `window.navigator.userLanguage`
-- `window.navigator.browserLanguage`
-- `window.navigator.systemLanguage`
 
 `...languages` is an array of strings, the others are strings. Some browsers return mixed-case [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag) (e.g. `de-DE`), while others return lowercase ones (e.g. `de-de`). Finally, non-browser environments will not return anything, so you need a fallback.
 
