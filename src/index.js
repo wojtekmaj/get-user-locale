@@ -22,9 +22,7 @@ function normalizeLocales(arr) {
 function getUserLocalesInternal({ useFallbackLocale = true, fallbackLocale = 'en-US' } = {}) {
   let languageList = [];
 
-  if (typeof window !== 'undefined') {
-    const { navigator } = window;
-
+  if (typeof navigator !== 'undefined') {
     languageList = languageList.concat(navigator.languages, navigator.language);
   }
 
