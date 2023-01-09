@@ -1,6 +1,6 @@
 import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index';
 
-let mockNavigatorObject = null;
+let mockNavigatorObject: object;
 
 /**
  * Because unlike in the real browser navigator object will change, we need to add mock navigator
@@ -10,7 +10,7 @@ jest.mock('lodash.memoize', () =>
   jest.fn().mockImplementation((fn, resolver) => {
     const actualMemoize = jest.requireActual('lodash.memoize');
 
-    function navigatorResolver(args) {
+    function navigatorResolver(args: object) {
       return JSON.stringify(mockNavigatorObject) + resolver(args);
     }
 
@@ -18,9 +18,9 @@ jest.mock('lodash.memoize', () =>
   }),
 );
 
-const navigatorLanguageProperties = ['language', 'languages'];
+const navigatorLanguageProperties: (keyof Navigator)[] = ['language', 'languages'];
 
-function mockNavigator(mockNavigatorProperties) {
+function mockNavigator(mockNavigatorProperties: { [key in keyof Navigator]?: Navigator[key] }) {
   navigatorLanguageProperties.forEach((property) =>
     Object.defineProperty(window.navigator, property, {
       value: mockNavigatorProperties[property],
@@ -39,6 +39,7 @@ describe('getUserLocale()', () => {
   it('returns valid list for Chrome', () => {
     const navigator = {
       language: 'pl',
+      potato: true,
       languages: ['pl', 'en-US', 'en', 'pl-PL'],
     };
 
