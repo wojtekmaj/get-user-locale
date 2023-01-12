@@ -13,9 +13,13 @@ function uniqDefined(arr: string[]) {
   return arr.filter((el, index) => el && arr.indexOf(el) === index);
 }
 
+function isAllLowerCase(el: string) {
+  return el.toLowerCase() === el;
+}
+
 function normalizeLocales(arr: string[]) {
   return arr.map((el) => {
-    if (!el || el.indexOf('-') === -1 || el.toLowerCase() !== el) {
+    if (!el || el.indexOf('-') === -1 || !isAllLowerCase(el)) {
       return el;
     }
 
