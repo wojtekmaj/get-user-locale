@@ -4,8 +4,10 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "moduleResolution": "node",
+    "noUncheckedIndexedAccess": true,
     "outDir": "dist",
     "strict": true,
+    "strictNullChecks": true,
     "target": "es5"
   },
   "include": ["src"]
