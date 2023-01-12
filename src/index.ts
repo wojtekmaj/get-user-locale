@@ -17,16 +17,14 @@ function isAllLowerCase(el: string) {
   return el.toLowerCase() === el;
 }
 
-function normalizeLocales(arr: string[]) {
-  return arr.map((el) => {
-    if (!el || el.indexOf('-') === -1 || !isAllLowerCase(el)) {
-      return el;
-    }
+function normalizeLocale(el: string) {
+  if (!el || el.indexOf('-') === -1 || !isAllLowerCase(el)) {
+    return el;
+  }
 
-    const [splitEl1 = '', splitEl2 = ''] = el.split('-');
+  const [splitEl1 = '', splitEl2 = ''] = el.split('-');
 
-    return `${splitEl1}-${splitEl2.toUpperCase()}`;
-  });
+  return `${splitEl1}-${splitEl2.toUpperCase()}`;
 }
 
 function getUserLocalesInternal({
@@ -43,7 +41,7 @@ function getUserLocalesInternal({
     languageList.push(fallbackLocale);
   }
 
-  return normalizeLocales(uniqDefined(languageList));
+  return uniqDefined(languageList).map(normalizeLocale);
 }
 
 export const getUserLocales = memoize(getUserLocalesInternal, resolver);
