@@ -23,8 +23,9 @@ function normalizeLocales(arr: string[]) {
       return el;
     }
 
-    const splitEl = el.split('-');
-    return `${splitEl[0]}-${splitEl[1].toUpperCase()}`;
+    const [splitEl1 = '', splitEl2 = ''] = el.split('-');
+
+    return `${splitEl1}-${splitEl2.toUpperCase()}`;
   });
 }
 
