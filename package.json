@@ -1,6 +1,6 @@
 {
   "name": "get-user-locale",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Returns a list of strings representing the user's preferred languages.",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
