@@ -1,6 +1,7 @@
 /**
- * @jest-environment node
+ * @vitest-environment node
  */
+import { describe, expect, it } from 'vitest';
 import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index';
 
 it('exports getUserLocale() by default', () => {

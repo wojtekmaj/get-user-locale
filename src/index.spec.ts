@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest';
 import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index';
 
 let mockNavigatorObject: object;
@@ -6,17 +7,22 @@ let mockNavigatorObject: object;
  * Because unlike in the real browser navigator object will change, we need to add mock navigator
  * object to lodash.memoize resolver function.
  */
-jest.mock('lodash.memoize', () =>
-  jest.fn().mockImplementation((fn, resolver) => {
-    const actualMemoize = jest.requireActual('lodash.memoize');
 
-    function navigatorResolver(args: object) {
-      return JSON.stringify(mockNavigatorObject) + resolver(args);
-    }
+vi.mock('lodash.memoize', async () => {
+  const { default: actualMemoize } = await vi.importActual<{
+    default: typeof import('lodash.memoize');
+  }>('lodash.memoize');
 
-    return actualMemoize(fn, navigatorResolver);
-  }),
-);
+  return {
+    default: vi.fn().mockImplementation((fn, resolver) => {
+      function navigatorResolver(args: unknown) {
+        return JSON.stringify(mockNavigatorObject) + resolver(args);
+      }
+
+      return actualMemoize(fn, navigatorResolver);
+    }),
+  };
+});
 
 const navigatorLanguageProperties: (keyof Navigator)[] = ['language', 'languages'];
 
