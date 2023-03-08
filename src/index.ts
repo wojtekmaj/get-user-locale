@@ -46,6 +46,16 @@ function getUserLocalesInternal({
 
 export const getUserLocales = memoize(getUserLocalesInternal, resolver);
 
+function getUserLocaleInternal(options?: undefined): string;
+function getUserLocaleInternal(options?: Record<string, never>): string;
+function getUserLocaleInternal(options?: {
+  useFallbackLocale: false;
+  fallbackLocale?: string;
+}): string | null;
+function getUserLocaleInternal(options?: {
+  useFallbackLocale?: true;
+  fallbackLocale?: string;
+}): string;
 function getUserLocaleInternal(options?: UserLocaleOptions): string | null {
   return getUserLocales(options)[0] || null;
 }
