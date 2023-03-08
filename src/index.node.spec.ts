@@ -18,12 +18,24 @@ describe('getUserLocale()', () => {
     expect(getUserLocale({})).toEqual('en-US');
   });
 
+  it('returns default fallback locale when no navigator properties are given and getUserLocale is called with useFallbackLocale = true option', () => {
+    expect(getUserLocale({ useFallbackLocale: true })).toEqual('en-US');
+  });
+
   it('returns custom fallback locale when no navigator properties are given and getUserLocale is called with fallbackLocale option', () => {
     expect(getUserLocale({ fallbackLocale: 'de-DE' })).toEqual('de-DE');
   });
 
+  it('returns custom fallback locale when no navigator properties are given and getUserLocale is called with fallbackLocale and useFallbackLocale = true options', () => {
+    expect(getUserLocale({ fallbackLocale: 'de-DE', useFallbackLocale: true })).toEqual('de-DE');
+  });
+
   it('returns null when no navigator properties are given and getUserLocale is called with useFallbackLocale = false option', () => {
     expect(getUserLocale({ useFallbackLocale: false })).toEqual(null);
+  });
+
+  it('returns null when no navigator properties are given and getUserLocale is called with fallbackLocale and useFallbackLocale = false options', () => {
+    expect(getUserLocale({ fallbackLocale: 'de-DE', useFallbackLocale: false })).toEqual(null);
   });
 });
 

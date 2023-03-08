@@ -102,6 +102,14 @@ describe('getUserLocale()', () => {
     expect(getUserLocale({})).toEqual('en-US');
   });
 
+  it('returns default fallback locale when no navigator properties are given and getUserLocale is called with useFallbackLocale = true option', () => {
+    const navigator = {};
+
+    mockNavigator(navigator);
+
+    expect(getUserLocale({ useFallbackLocale: true })).toEqual('en-US');
+  });
+
   it('returns custom fallback locale when no navigator properties are given and getUserLocale is called with fallbackLocale option', () => {
     const navigator = {};
 
@@ -110,12 +118,28 @@ describe('getUserLocale()', () => {
     expect(getUserLocale({ fallbackLocale: 'de-DE' })).toEqual('de-DE');
   });
 
+  it('returns custom fallback locale when no navigator properties are given and getUserLocale is called with fallbackLocale and useFallbackLocale = true options', () => {
+    const navigator = {};
+
+    mockNavigator(navigator);
+
+    expect(getUserLocale({ fallbackLocale: 'de-DE', useFallbackLocale: true })).toEqual('de-DE');
+  });
+
   it('returns null when no navigator properties are given and getUserLocale is called with useFallbackLocale = false option', () => {
     const navigator = {};
 
     mockNavigator(navigator);
 
     expect(getUserLocale({ useFallbackLocale: false })).toEqual(null);
+  });
+
+  it('returns null when no navigator properties are given and getUserLocale is called with fallbackLocale and useFallbackLocale = false options', () => {
+    const navigator = {};
+
+    mockNavigator(navigator);
+
+    expect(getUserLocale({ fallbackLocale: 'de-DE', useFallbackLocale: false })).toEqual(null);
   });
 });
 
