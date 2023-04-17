@@ -48,7 +48,7 @@
     "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.0",
     "typescript": "^5.0.2",
-    "vitest": "^0.29.2"
+    "vitest": "^0.30.1"
   },
   "files": [
     "dist",
