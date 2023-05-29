@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index';
+import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index.js';
 
 let mockNavigatorObject: object;
 

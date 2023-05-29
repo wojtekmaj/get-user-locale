@@ -2,7 +2,7 @@
  * @vitest-environment node
  */
 import { describe, expect, it } from 'vitest';
-import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index';
+import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index.js';
 
 it('exports getUserLocale() by default', () => {
   expect(getUserLocaleDefault).toBeDefined();
