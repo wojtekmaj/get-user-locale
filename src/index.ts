@@ -9,8 +9,12 @@ function resolver(options?: UserLocaleOptions): string {
   return JSON.stringify(options);
 }
 
-function uniqDefined(arr: string[]) {
-  return arr.filter((el, index) => el && arr.indexOf(el) === index);
+function isString(el: unknown): el is string {
+  return typeof el === 'string';
+}
+
+function isUnique<T>(el: T, index: number, arr: T[]) {
+  return arr.indexOf(el) === index;
 }
 
 function isAllLowerCase(el: string) {
@@ -41,7 +45,7 @@ function getUserLocalesInternal({
     languageList.push(fallbackLocale);
   }
 
-  return uniqDefined(languageList).map(normalizeLocale);
+  return languageList.filter(isString).filter(isUnique).map(normalizeLocale);
 }
 
 export const getUserLocales = memoize(getUserLocalesInternal, resolver);
