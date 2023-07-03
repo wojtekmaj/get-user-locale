@@ -219,4 +219,74 @@ describe('getUserLocales()', () => {
 
     expect(getUserLocales({ useFallbackLocale: false })).toEqual([]);
   });
+
+  it('handles invalid navigator properties', () => {
+    const navigator = {
+      language: 'en-US,en',
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual(['en-US', 'en']);
+  });
+
+  it('handles POSIX locales (1)', () => {
+    const navigator = {
+      language: 'C',
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual(['en-US']);
+  });
+
+  it('handles POSIX locales (2)', () => {
+    const navigator = {
+      language: 'C.UTF-8',
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual(['en-US']);
+  });
+
+  it('handles POSIX locales (3)', () => {
+    const navigator = {
+      language: 'en-US.UTF-8',
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual(['en-US']);
+  });
+
+  it('handles POSIX locales (3)', () => {
+    const navigator = {
+      language: 'en-US.UTF-8',
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual(['en-US']);
+  });
+
+  it('handles POSIX locales (4)', () => {
+    const navigator = {
+      language: 'en-US@posix',
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual(['en-US']);
+  });
+
+  it('handles POSIX locales (5)', () => {
+    const navigator = {
+      language: 'posix',
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocales()).toEqual(['en-US']);
+  });
 });
