@@ -9,7 +9,7 @@ A function that returns user's locale as an [IETF language tag](https://en.wikip
 - Install by executing `npm install get-user-locale` or `yarn add get-user-locale`.
 - Import by adding `import getUserLocale from 'get-user-locale'`.
 - Do stuff with it!
-  ```js
+  ```ts
   const userLocale = getUserLocale();
   ```
 
@@ -19,22 +19,20 @@ A function that returns user's locale as an [IETF language tag](https://en.wikip
 
 A function that returns user's preferred locale as an [IETF language tag](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
 
-#### Sample result
+#### Sample usage
 
-```js
-'de-DE';
-```
-
-#### Usage
-
-```js
+```ts
 import getUserLocale from 'get-user-locale';
+
+getUserLocale(); // 'de-DE'
 ```
 
 or
 
-```js
+```ts
 import { getUserLocale } from 'get-user-locale';
+
+getUserLocale(); // 'de-DE'
 ```
 
 ##### Options
@@ -52,16 +50,12 @@ import { getUserLocale } from 'get-user-locale';
 
 A function that returns an array of user's preferred locales as an [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag), based on all available sources.
 
-#### Sample result
+#### Sample usage
 
-```js
-['de-DE', 'de', 'en-US', 'en'];
-```
-
-#### Usage
-
-```js
+```ts
 import { getUserLocales } from 'get-user-locale';
+
+getUserLocales(); // ['de-DE', 'de', 'en-US', 'en']
 ```
 
 ##### Options
