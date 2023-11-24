@@ -48,7 +48,7 @@
     "lint-staged": "^14.0.0",
     "prettier": "^3.0.0",
     "rimraf": "^3.0.0",
-    "typescript": "^5.0.0",
+    "typescript": "^5.3.2",
     "vitest": "^0.34.6"
   },
   "resolutions": {
