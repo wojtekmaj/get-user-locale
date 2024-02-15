@@ -41,7 +41,7 @@
     "lodash.memoize": "^4.1.1"
   },
   "devDependencies": {
-    "eslint": "^8.26.0",
+    "eslint": "^8.56.0",
     "eslint-config-wojtekmaj": "^0.9.0",
     "happy-dom": "^12.6.0",
     "husky": "^9.0.0",
