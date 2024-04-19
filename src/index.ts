@@ -1,13 +1,9 @@
-import memoize from 'lodash.memoize';
+import mem from 'mem';
 
 type UserLocaleOptions = {
   useFallbackLocale?: boolean;
   fallbackLocale?: string;
 };
-
-function resolver(options?: UserLocaleOptions): string {
-  return JSON.stringify(options);
-}
 
 function isString(el: unknown): el is string {
   return typeof el === 'string';
@@ -84,7 +80,7 @@ function getUserLocalesInternal({
   return languageList.filter(isString).map(normalizeLocale).filter(isUnique);
 }
 
-export const getUserLocales = memoize(getUserLocalesInternal, resolver);
+export const getUserLocales = mem(getUserLocalesInternal, { cacheKey: JSON.stringify });
 
 function getUserLocaleInternal(options?: undefined): string;
 function getUserLocaleInternal(options?: Record<string, never>): string;
@@ -100,6 +96,6 @@ function getUserLocaleInternal(options?: UserLocaleOptions): string | null {
   return getUserLocales(options)[0] || null;
 }
 
-export const getUserLocale = memoize(getUserLocaleInternal, resolver);
+export const getUserLocale = mem(getUserLocaleInternal, { cacheKey: JSON.stringify });
 
 export default getUserLocale;

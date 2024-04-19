@@ -37,8 +37,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@types/lodash.memoize": "^4.1.7",
-    "lodash.memoize": "^4.1.1"
+    "mem": "^8.0.0"
   },
   "devDependencies": {
     "eslint": "^8.56.0",
