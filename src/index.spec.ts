@@ -28,12 +28,13 @@ vi.mock('lodash.memoize', async () => {
 const navigatorLanguageProperties: (keyof Navigator)[] = ['language', 'languages'];
 
 function mockNavigator(mockNavigatorProperties: { [key in keyof Navigator]?: Navigator[key] }) {
-  navigatorLanguageProperties.forEach((property) =>
+  for (const property of navigatorLanguageProperties) {
     Object.defineProperty(window.navigator, property, {
       value: mockNavigatorProperties[property],
       configurable: true,
-    }),
-  );
+    });
+  }
+
   mockNavigatorObject = mockNavigatorProperties;
 }
 
