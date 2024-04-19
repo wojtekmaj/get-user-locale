@@ -6,21 +6,21 @@ let mockNavigatorObject: object;
 
 /**
  * Because unlike in the real browser navigator object will change, we need to add mock navigator
- * object to lodash.memoize resolver function.
+ * object to memoize cacheKey function.
  */
 
-vi.mock('lodash.memoize', async () => {
+vi.mock('memoize', async () => {
   const { default: actualMemoize } = await vi.importActual<{
-    default: typeof import('lodash.memoize');
-  }>('lodash.memoize');
+    default: typeof import('memoize').default;
+  }>('memoize');
 
   return {
-    default: vi.fn().mockImplementation((fn, resolver) => {
-      function navigatorResolver(args: unknown) {
-        return JSON.stringify(mockNavigatorObject) + resolver(args);
+    default: vi.fn().mockImplementation((fn, options) => {
+      function cacheKeyWithNavigator(args: unknown) {
+        return JSON.stringify(mockNavigatorObject) + options.cacheKey(args);
       }
 
-      return actualMemoize(fn, navigatorResolver);
+      return actualMemoize(fn, { cacheKey: cacheKeyWithNavigator });
     }),
   };
 });

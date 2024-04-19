@@ -468,22 +468,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.memoize@npm:^4.1.7":
-  version: 4.1.7
-  resolution: "@types/lodash.memoize@npm:4.1.7"
-  dependencies:
-    "@types/lodash": "npm:*"
-  checksum: 10c0/979a59dbbae968a03834fdb544dc5ddd34620a2912d5030c997a1aa919326425a900c93bc69554b2a873cf54f09b4dd2752b3a1c29ab4bffac5983113c58b1b5
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:*":
-  version: 4.14.192
-  resolution: "@types/lodash@npm:4.14.192"
-  checksum: 10c0/6807402e293cb943808a444d1ef514ce13de4f870b3b382fe729f8235ea280c4d037b9514443723afd3d04b2cf9e8f1b3fc0075d947edfeb1078347dc2b471b0
-  languageName: node
-  linkType: hard
-
 "@types/semver@npm:^7.5.0":
   version: 7.5.7
   resolution: "@types/semver@npm:7.5.7"
@@ -1753,13 +1737,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "get-user-locale@workspace:."
   dependencies:
-    "@types/lodash.memoize": "npm:^4.1.7"
     eslint: "npm:^8.56.0"
     eslint-config-wojtekmaj: "npm:^1.0.0"
     happy-dom: "npm:^12.6.0"
     husky: "npm:^9.0.0"
     lint-staged: "npm:^15.0.0"
-    lodash.memoize: "npm:^4.1.1"
+    memoize: "npm:^10.0.0"
     prettier: "npm:^3.2.0"
     rimraf: "npm:^3.0.0"
     typescript: "npm:^5.4.2"
@@ -2226,13 +2209,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash.memoize@npm:^4.1.1":
-  version: 4.1.2
-  resolution: "lodash.memoize@npm:4.1.2"
-  checksum: 10c0/c8713e51eccc650422716a14cece1809cfe34bc5ab5e242b7f8b4e2241c2483697b971a604252807689b9dd69bfe3a98852e19a5b89d506b000b4187a1285df8
-  languageName: node
-  linkType: hard
-
 "lodash.merge@npm:^4.6.2":
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
@@ -2317,6 +2293,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"memoize@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "memoize@npm:10.0.0"
+  dependencies:
+    mimic-function: "npm:^5.0.0"
+  checksum: 10c0/1584351834564be66b21d47b7afe495851f622669ad49e2f4fa4f35d5633471b93176cf602130a95f71fa0aee65a20179817ffac2dd11fa354aa19a8109a14e8
+  languageName: node
+  linkType: hard
+
 "merge-stream@npm:^2.0.0":
   version: 2.0.0
   resolution: "merge-stream@npm:2.0.0"
@@ -2352,6 +2337,13 @@ __metadata:
   version: 4.0.0
   resolution: "mimic-fn@npm:4.0.0"
   checksum: 10c0/de9cc32be9996fd941e512248338e43407f63f6d497abe8441fa33447d922e927de54d4cc3c1a3c6d652857acd770389d5a3823f311a744132760ce2be15ccbf
+  languageName: node
+  linkType: hard
+
+"mimic-function@npm:^5.0.0":
+  version: 5.0.1
+  resolution: "mimic-function@npm:5.0.1"
+  checksum: 10c0/f3d9464dd1816ecf6bdf2aec6ba32c0728022039d992f178237d8e289b48764fee4131319e72eedd4f7f094e22ded0af836c3187a7edc4595d28dd74368fd81d
   languageName: node
   linkType: hard
 
