@@ -9,15 +9,15 @@ function isString(el: unknown): el is string {
   return typeof el === 'string';
 }
 
-function isUnique<T>(el: T, index: number, arr: T[]) {
+function isUnique<T>(el: T, index: number, arr: T[]): boolean {
   return arr.indexOf(el) === index;
 }
 
-function isAllLowerCase(el: string) {
+function isAllLowerCase(el: string): boolean {
   return el.toLowerCase() === el;
 }
 
-function fixCommas(el: string) {
+function fixCommas(el: string): string | string[] {
   return el.indexOf(',') === -1 ? el : el.split(',');
 }
 
@@ -80,7 +80,14 @@ function getUserLocalesInternal({
   return languageList.filter(isString).map(normalizeLocale).filter(isUnique);
 }
 
-export const getUserLocales = mem(getUserLocalesInternal, { cacheKey: JSON.stringify });
+export const getUserLocales: (
+  options?:
+    | {
+        useFallbackLocale?: boolean;
+        fallbackLocale?: string;
+      }
+    | undefined,
+) => string[] = mem(getUserLocalesInternal, { cacheKey: JSON.stringify });
 
 function getUserLocaleInternal(options?: undefined): string;
 function getUserLocaleInternal(options?: Record<string, never>): string;
@@ -96,6 +103,17 @@ function getUserLocaleInternal(options?: UserLocaleOptions): string | null {
   return getUserLocales(options)[0] || null;
 }
 
-export const getUserLocale = mem(getUserLocaleInternal, { cacheKey: JSON.stringify });
+export const getUserLocale: {
+  (options?: undefined): string;
+  (options?: Record<string, never>): string;
+  (options?: {
+    useFallbackLocale: false;
+    fallbackLocale?: string;
+  }): string | null;
+  (options?: {
+    useFallbackLocale?: true;
+    fallbackLocale?: string;
+  }): string;
+} = mem(getUserLocaleInternal, { cacheKey: JSON.stringify });
 
 export default getUserLocale;
