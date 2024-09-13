@@ -40,7 +40,7 @@
     "mem": "^8.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
+    "@biomejs/biome": "1.8.3",
     "happy-dom": "^12.6.0",
     "husky": "^9.0.0",
     "rimraf": "^6.0.0",
