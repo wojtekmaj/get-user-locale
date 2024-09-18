@@ -5,6 +5,7 @@
     "isolatedDeclarations": true,
     "isolatedModules": true,
     "module": "nodenext",
+    "moduleDetection": "force",
     "noEmit": true,
     "noUncheckedIndexedAccess": true,
     "outDir": "dist",
