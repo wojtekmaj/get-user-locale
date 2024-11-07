@@ -5,6 +5,14 @@ import { describe, expect, it } from 'vitest';
 
 import getUserLocaleDefault, { getUserLocale, getUserLocales } from './index.js';
 
+// Simulate Node.js behavior prior to Node.js 21.2.0
+Object.defineProperty(globalThis, 'navigator', {
+  value: undefined,
+  writable: true,
+  enumerable: false,
+  configurable: false,
+});
+
 it('exports getUserLocale() by default', () => {
   expect(getUserLocaleDefault).toBeDefined();
   expect(getUserLocaleDefault).toBe(getUserLocale);
