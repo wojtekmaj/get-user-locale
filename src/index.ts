@@ -1,4 +1,4 @@
-import mem from 'mem';
+import memoize from 'memoize';
 
 type UserLocaleOptions = {
   useFallbackLocale?: boolean;
@@ -87,7 +87,7 @@ export const getUserLocales: (
         fallbackLocale?: string;
       }
     | undefined,
-) => string[] = mem(getUserLocalesInternal, { cacheKey: JSON.stringify });
+) => string[] = memoize(getUserLocalesInternal, { cacheKey: JSON.stringify });
 
 function getUserLocaleInternal(options?: undefined): string;
 function getUserLocaleInternal(options?: Record<string, never>): string;
@@ -114,6 +114,6 @@ export const getUserLocale: {
     useFallbackLocale?: true;
     fallbackLocale?: string;
   }): string;
-} = mem(getUserLocaleInternal, { cacheKey: JSON.stringify });
+} = memoize(getUserLocaleInternal, { cacheKey: JSON.stringify });
 
 export default getUserLocale;
