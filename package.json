@@ -13,7 +13,7 @@
   },
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
-    "clean": "rimraf dist",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
     "format": "biome format",
     "lint": "biome lint",
     "postinstall": "husky",
@@ -39,7 +39,6 @@
     "@biomejs/biome": "1.9.0",
     "happy-dom": "^15.10.2",
     "husky": "^9.0.0",
-    "rimraf": "^6.0.0",
     "typescript": "^5.5.2",
     "vitest": "^3.0.5"
   },
