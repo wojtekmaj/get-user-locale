@@ -40,7 +40,7 @@
     "happy-dom": "^15.10.2",
     "husky": "^9.0.0",
     "typescript": "^5.5.2",
-    "vitest": "^3.0.5"
+    "vitest": "^3.2.3"
   },
   "publishConfig": {
     "access": "public",
