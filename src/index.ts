@@ -106,14 +106,8 @@ function getUserLocaleInternal(options?: UserLocaleOptions): string | null {
 export const getUserLocale: {
   (options?: undefined): string;
   (options?: Record<string, never>): string;
-  (options?: {
-    useFallbackLocale: false;
-    fallbackLocale?: string;
-  }): string | null;
-  (options?: {
-    useFallbackLocale?: true;
-    fallbackLocale?: string;
-  }): string;
+  (options?: { useFallbackLocale: false; fallbackLocale?: string }): string | null;
+  (options?: { useFallbackLocale?: true; fallbackLocale?: string }): string;
 } = memoize(getUserLocaleInternal, { cacheKey: JSON.stringify });
 
 export default getUserLocale;
