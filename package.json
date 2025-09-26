@@ -39,7 +39,7 @@
     "@biomejs/biome": "2.2.4",
     "happy-dom": "^15.10.2",
     "husky": "^9.0.0",
-    "typescript": "^5.5.2",
+    "typescript": "^5.9.2",
     "vitest": "^3.2.3"
   },
   "publishConfig": {

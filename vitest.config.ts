@@ -10,4 +10,3 @@ const config: ViteUserConfig = defineConfig({
 });
 
 export default config;
-
