@@ -1,3 +1,4 @@
+import { playwright } from '@vitest/browser-playwright';
 import { defineConfig } from 'vitest/config';
 
 import type { ViteUserConfig } from 'vitest/config';
@@ -12,7 +13,7 @@ const config: ViteUserConfig = defineConfig({
             enabled: true,
             headless: true,
             instances: [{ browser: 'chromium' }],
-            provider: 'playwright',
+            provider: playwright(),
           },
           exclude: ['src/**/*.node.{spec,test}.ts'],
           include: ['src/**/*.{spec,test}.ts'],
