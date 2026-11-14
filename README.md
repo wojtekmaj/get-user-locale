@@ -82,7 +82,7 @@ Get-User-Locale does the following:
 
 - Combines all of them into one sane set of locales - in that particular order,
 - Dedupes them,
-- Fixes invalid, lowercased [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag) (so that the part after `-` is always uppercased),
+- Normalizes lowercased [IETF language tags](https://en.wikipedia.org/wiki/IETF_language_tag), preserving scripts, regions, variants, and extensions,
 - Adds a fallback to `en-US`, so if all else fails, you will get a result that won't crash your app.
 
 ## License

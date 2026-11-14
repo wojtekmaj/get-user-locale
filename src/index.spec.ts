@@ -86,6 +86,24 @@ describe('getUserLocale()', () => {
     expect(getUserLocale()).toEqual('pl-PL');
   });
 
+  it.each`
+    locale                  | expectedLocale
+    ${'zh-hant-tw'}         | ${'zh-Hant-TW'}
+    ${'sr-latn'}            | ${'sr-Latn'}
+    ${'sl-rozaj-biske'}     | ${'sl-biske-rozaj'}
+    ${'en-us-u-ca-gregory'} | ${'en-US-u-ca-gregory'}
+    ${'en-us-x-private'}    | ${'en-US-x-private'}
+    ${'ja-u'}               | ${'ja-u'}
+  `('normalizes $locale to $expectedLocale', ({ locale, expectedLocale }) => {
+    const navigator = {
+      language: locale,
+    };
+
+    mockNavigator(navigator);
+
+    expect(getUserLocale()).toEqual(expectedLocale);
+  });
+
   it('returns default fallback locale when no navigator properties are given', () => {
     const navigator = {};
 
@@ -185,6 +203,26 @@ describe('getUserLocales()', () => {
     mockNavigator(navigator);
 
     expect(getUserLocales()).toEqual(['pl-PL', 'pl', 'en-US', 'en']);
+  });
+
+  it('preserves distinct locales and extensions when normalizing lowercase locales', () => {
+    const navigator = {
+      language: 'zh-hant-tw',
+      languages: ['zh-hant-tw', 'zh-hant-hk', 'sr-latn-rs', 'ja-u-ca-japanese'],
+    };
+
+    mockNavigator(navigator);
+
+    const locales = getUserLocales();
+
+    expect(locales).toEqual([
+      'zh-Hant-TW',
+      'zh-Hant-HK',
+      'sr-Latn-RS',
+      'ja-u-ca-japanese',
+      'en-US',
+    ]);
+    expect(() => new Intl.DateTimeFormat(locales[3])).not.toThrow();
   });
 
   it('returns default fallback locale when no navigator properties are given', () => {

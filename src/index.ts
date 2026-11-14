@@ -44,14 +44,17 @@ function normalizeLocale(locale: string): string {
     return normalizeLocale(actualLocale);
   }
 
-  // If there's a dash (-) in the locale and it's not all lower case, it's already in the format of "en-US", so we return it
+  // Only normalize lowercase language tags with subtags
   if (locale.indexOf('-') === -1 || !isAllLowerCase(locale)) {
     return locale;
   }
 
-  const [splitEl1, splitEl2 = ''] = locale.split('-');
-
-  return `${splitEl1}-${splitEl2.toUpperCase()}`;
+  try {
+    return Intl.getCanonicalLocales(locale)[0] || locale;
+  } catch {
+    // Preserve unrecognized locale strings instead of throwing
+    return locale;
+  }
 }
 
 function getUserLocalesInternal({
