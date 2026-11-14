@@ -1,6 +1,6 @@
 {
   "name": "get-user-locale",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Returns a list of strings representing the user's preferred languages.",
   "type": "module",
   "sideEffects": false,
