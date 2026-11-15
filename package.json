@@ -36,7 +36,7 @@
     "memoize": "^10.0.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.8",
+    "@biomejs/biome": "2.6.8",
     "@vitest/browser-playwright": "^5.0.5",
     "husky": "^9.0.0",
     "playwright": "^1.60.0",
